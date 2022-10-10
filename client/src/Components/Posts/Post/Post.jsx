@@ -4,8 +4,8 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
-import { Card, CardActions, CarContent,CardMedia,Button, Typography, CardContent } from '@material-ui/core';
-const Post = ({post}) => {
+import { Card, CardActions, CardMedia,Button, Typography, CardContent } from '@material-ui/core';
+const Post = ({post, setCurrentId}) => {
    const classes = useStyles();
   return (
     <Card className = {classes.card}>
@@ -19,7 +19,7 @@ const Post = ({post}) => {
     </Typography>
     </div>
     <div className={classes.overlay2}>
-    <Button style={{color:"white"}} size ="small" ><MoreHorizIcon fontSize="default"/></Button>
+    <Button style={{color:"white"}} size ="small" onClick ={()=>setCurrentId(post._id)}><MoreHorizIcon fontSize="default"/></Button>
       
     </div>
     <div className={classes.details}>
