@@ -23,11 +23,13 @@ if(post)setPostData(post);
     }else{
       dispatch(createPost(postData));
     }
-    
+    clear();
    }
 
-   const clear = ()=>{
 
+    const clear = () => {
+    setCurrentId(0);
+    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
    }
   return (
     <Paper className={classes.paper}>
