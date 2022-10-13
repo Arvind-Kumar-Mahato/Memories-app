@@ -6,7 +6,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import { Card, CardActions, CardMedia,Button, Typography, CardContent } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../../../actions/posts';
+import { deletePost, likePost } from '../../../actions/posts';
 const Post = ({post, setCurrentId}) => {
    const classes = useStyles();
    const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const Post = ({post, setCurrentId}) => {
       
     </div>
     <div className={classes.details}>
-      <Typography variant="body2" color="textSecondary" component ="h2" >{post.tags.map((tag)=>`#${tag}`)}
+      <Typography variant="body2" color="textSecondary" component ="h2" >{post.tags.map((tag)=>`#${tag} `)}
 
       </Typography>
     </div>
@@ -37,7 +37,7 @@ const Post = ({post, setCurrentId}) => {
       </Typography>
     </CardContent>
     <CardActions className ={classes.cardActions}>
-    <Button size = "small" color="primary" ><ThumbUpAltIcon fontSize='small'/>Like {post.likeCount}</Button>
+    <Button size = "small" color="primary" onClick = {()=> dispatch(likePost(post._id))}><ThumbUpAltIcon fontSize='small'/>Like {post.likeCount}</Button>
     <Button size = "small" color ="primary" onClick={()=>dispatch(deletePost(post._id))}><DeleteIcon fontSize='small'/>Delete</Button>
     </CardActions>
     </Card>
